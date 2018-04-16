@@ -1,0 +1,35 @@
+{
+  "name": "kabanery-lumine-cli",
+  "version": "0.0.1",
+  "description": "cli tool for kabanery lumine",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "bin": {
+    "lumine-skelton": "./bin/lumine-skelton"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveKino/kabanery-lumine-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "kabanery",
+    "lumine"
+  ],
+  "author": "ddchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoveKino/kabanery-lumine-cli/issues"
+  },
+  "homepage": "https://github.com/LoveKino/kabanery-lumine-cli#readme",
+  "devDependencies": {
+    "mocha": "^5.1.0"
+  },
+  "dependencies": {
+    "es6-promisify": "^6.0.0",
+    "mkdirp": "^0.5.1",
+    "yargs": "^11.0.0"
+  }
+}

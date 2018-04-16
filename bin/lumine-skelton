@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const Skelton = require('../src/skelton');
+
+const yargs = require('yargs');
+const path = require('path');
+
+yargs.usage(`Usage: lumine-skelton
+    -d [web module direcotry]
+    `).demandOption([]).help('h').alias('h', 'help');
+
+const {
+  argv
+} = yargs;
+
+const webDir = path.join(process.cwd(), argv.d || '');
+
+Skelton({
+  webDir,
+  indexName: argv.indexName,
+  assetName: argv.assetName,
+  libName: argv.libName,
+  libIndexName: argv.libIndexName,
+  pageSignalActionMapPath: argv.pageSignalActionMapPath,
+  pageViewMapPath: argv.pageViewMapPath,
+  apiStubPath: argv.apiStubPath,
+  defaultPage: argv.defaultPage
+});
