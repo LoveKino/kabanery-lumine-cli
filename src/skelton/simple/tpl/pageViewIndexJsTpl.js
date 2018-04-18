@@ -7,6 +7,5 @@ module.exports = ({defaultPage}) => `'use strict';
 const ${defaultPage} = require('./${defaultPage}');
 
 module.exports = {
-    ${defaultPage}
-};
-`;
+  ${defaultPage}
+};`;

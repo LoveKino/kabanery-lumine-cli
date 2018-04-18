@@ -2,7 +2,7 @@ module.exports = () => `'use strict';
 
 const SimplePager = require('kabanery-lumine/lib/page/simplePager');
 const {
-    lumineView, n
+  lumineView, n
 } = require('kabanery-lumine');
 
 /**
@@ -17,7 +17,7 @@ const {
 
 /**
  *  SimplePager encapsulate notice and loading view.
- *  
+ *
  *      .notice.text
  *      .notice.show
  *      .loading.show
@@ -30,14 +30,14 @@ const {
  */
 
 /**
- * pass signal 
+ * pass signal
  *     demo: n(Button, {onsignal: ctx.pass('click', SIGNAL_TYPE)}, 'save')
  */
-
-module.exports = SimplePager(lumineView(({}, ctx) => {
-    //
-    return n('div', 'hello lumine page!');
+module.exports = SimplePager(lumineView(({
+  props
+}, ctx) => {
+  //
+  return n('div', 'hello lumine page!');
 }, {
-    defaultProps: {
-    }
+  defaultProps: {}
 }));`;
