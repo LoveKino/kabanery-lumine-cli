@@ -19,8 +19,8 @@ const {
 /**
  *
  * skelton = { // for a SPA module
- *      index.html
  *     -asset
+ *          index.html
  *     -lib
  *           index.js
  *          -pageView
@@ -31,10 +31,12 @@ const {
  * }
  */
 module.exports = (options) => {
-  const indexHtmlPath =
-    path.join(options.webDir, options.indexName || 'index.html');
   const assetDir = path.join(options.webDir, options.assetName || 'asset');
   const libDir = path.join(options.webDir, options.libName || 'lib');
+
+  const indexHtmlPath =
+    path.join(assetDir, options.indexName || 'index.html');
+
   const libIndexJs = path.join(libDir, options.libIndexName || 'index.js');
 
   options.pageSignalActionMapPath =

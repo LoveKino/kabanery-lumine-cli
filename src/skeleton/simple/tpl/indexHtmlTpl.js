@@ -1,6 +1,6 @@
 module.exports = ({
   title = 'index',
-  appJs = './asset/app.js'
+  appJs = './app.js'
 }) => {
   return `<!DOCTYPE html>
 <html lang="en">
