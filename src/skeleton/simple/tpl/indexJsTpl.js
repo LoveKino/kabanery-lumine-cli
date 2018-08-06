@@ -19,8 +19,8 @@ SPA({
   pageSignalActionMap,
   pageOptionsMap: {
     ${defaultPage}: {
-        localStateStore: false,
-        localStateStoreWhiteList: []
+      localStateStore: false,
+      localStateStoreWhiteList: []
     }
   },
   defaultPage: '${defaultPage}'
