@@ -2,7 +2,7 @@
 
 cd `dirname $0`
 
-../../bin/lumine-skelton -h
+../../bin/lumine-skeleton -h
 
 rm -rf ./__test
-../../bin/lumine-skelton -d ./__test
+../../bin/lumine-skeleton -d ./__test

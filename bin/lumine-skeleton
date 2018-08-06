@@ -2,7 +2,8 @@
 
 'use strict';
 
-const Skelton = require('../src/skelton');
+const {Skeleton} = require('../src');
+const log = console.log; // eslint-disable-line
 
 const yargs = require('yargs');
 const path = require('path');
@@ -17,7 +18,9 @@ const {
 
 const webDir = path.join(process.cwd(), argv.d || '');
 
-Skelton({
+log(`Start to build skeleton project at ${webDir}.`);
+
+Skeleton({
   webDir,
   indexName: argv.indexName,
   assetName: argv.assetName,
@@ -27,4 +30,9 @@ Skelton({
   pageViewMapPath: argv.pageViewMapPath,
   apiStubPath: argv.apiStubPath,
   defaultPage: argv.defaultPage
+}).then(() => {
+  log('Build skeleton project successfully!');
+}).catch((err) => {
+  log('Fail to build skeleton project!');
+  throw err;
 });
