@@ -1,8 +1,11 @@
 'use strict';
 
-const {promisify} = require('es6-promisify');
+const {
+  promisify
+} = require('es6-promisify');
 const path = require('path');
 const mkdirp = promisify(require('mkdirp'));
+const spawnp = require('spawnp');
 
 const indexHtmlTpl = require('./tpl/indexHtmlTpl');
 const indexJsTpl = require('./tpl/indexJsTpl');
@@ -80,5 +83,29 @@ module.exports = (options) => {
 
       safeWrite(indexHtmlPath, indexHtmlTpl(options))
     ]);
+  }).then(() => {
+    return installDeps();
   });
+};
+
+const installDeps = () => {
+  const opts = {
+    stdio: 'inherit'
+  };
+
+  return [
+    () => spawnp('npm', ['i', 'kabanery-lumine', '--save'], opts),
+    () => spawnp('npm', ['i', 'webpack', '--save'], opts),
+    () => spawnp('npm', ['i', 'webpack-cli', '--save'], opts),
+    () => spawnp('npm', ['i', 'babel-core', '--save'], opts),
+    () => spawnp('npm', ['i', 'babel-loader', '--save'], opts),
+    () => spawnp('npm', ['i', 'babel-plugin-wildcard', '--save'], opts),
+    () => spawnp('npm', ['i', 'babel-preset-env', '--save'], opts),
+    () => spawnp('npm', ['i', 'babel-preset-react', '--save'], opts),
+    () => spawnp('npm', ['i', 'url-loader', '--save'], opts)
+  ].reduce((prev, cur) => {
+    return prev.then(() => {
+      return cur();
+    });
+  }, Promise.resolve());
 };
