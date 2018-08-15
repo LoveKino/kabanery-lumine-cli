@@ -22,9 +22,9 @@ const {
 /**
  *
  * skelton = { // for a SPA module
- *     -asset
- *          index.html
+ *     -dist
  *     -lib
+ *           index.html.tpl
  *           index.js
  *          -pageView
  *              index.js
@@ -34,11 +34,11 @@ const {
  * }
  */
 module.exports = (options) => {
-  const assetDir = path.join(options.webDir, options.assetName || 'asset');
+  const assetDir = path.join(options.webDir, 'dist');
   const libDir = path.join(options.webDir, options.libName || 'lib');
 
   const indexHtmlPath =
-    path.join(assetDir, options.indexName || 'index.html');
+    path.join(libDir, 'index.html.tpl');
 
   const libIndexJs = path.join(libDir, options.libIndexName || 'index.js');
 
@@ -95,14 +95,18 @@ const installDeps = () => {
 
   return [
     () => spawnp('npm', ['i', 'kabanery-lumine', '--save'], opts),
-    () => spawnp('npm', ['i', 'webpack', '--save'], opts),
-    () => spawnp('npm', ['i', 'webpack-cli', '--save'], opts),
-    () => spawnp('npm', ['i', 'babel-core', '--save'], opts),
-    () => spawnp('npm', ['i', 'babel-loader', '--save'], opts),
-    () => spawnp('npm', ['i', 'babel-plugin-wildcard', '--save'], opts),
-    () => spawnp('npm', ['i', 'babel-preset-env', '--save'], opts),
-    () => spawnp('npm', ['i', 'babel-preset-react', '--save'], opts),
-    () => spawnp('npm', ['i', 'url-loader', '--save'], opts)
+    () => spawnp('npm', ['i', 'webpack', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'webpack-cli', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'webpack-dev-server', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'html-webpack-plugin', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'babel-core', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'babel-loader', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'babel-plugin-wildcard', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'babel-preset-env', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'babel-preset-react', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'url-loader', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'css-loader', '--save-dev'], opts),
+    () => spawnp('npm', ['i', 'style-loader', '--save-dev'], opts)
   ].reduce((prev, cur) => {
     return prev.then(() => {
       return cur();

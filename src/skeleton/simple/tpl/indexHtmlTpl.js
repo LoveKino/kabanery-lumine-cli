@@ -1,6 +1,5 @@
 module.exports = ({
-  title = 'index',
-  appJs = './app.js'
+  title = 'index'
 }) => {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,6 @@ module.exports = ({
     </style>
 </head>
 <body>
-    <script src="${appJs}"></script>
 </body>
 </html>`;
 };
